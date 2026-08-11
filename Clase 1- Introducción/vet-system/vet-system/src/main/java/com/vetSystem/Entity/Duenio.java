@@ -24,8 +24,9 @@ public class Duenio {
     private Integer telefono;
     @Column(nullable = false)
     private String email;
-    @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Mascota> mascotas;
+    //@OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //private List<Mascota> mascotas;
+
 
 
 }
