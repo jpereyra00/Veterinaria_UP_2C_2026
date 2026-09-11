@@ -57,6 +57,9 @@ El proyecto se desarrolla en **dos fases**:
 | Spring Data JPA / Hibernate | via Spring | Persistencia relacional |
 | MySQL | 8.x | Base de datos relacional |
 | Lombok | — | Reducción de boilerplate |
+| MapStruct | 1.5.5 | Mapeo Entity ↔ DTO |
+| Bean Validation | via Spring | Validaciones de entrada (`@Valid`) |
+| JUnit 5 + Mockito + MockMvc | via Spring Boot Test | Testing unitario y de controladores |
 | Maven | — | Gestión de dependencias y build |
 | Git / GitHub | — | Control de versiones (una rama por sprint) |
 
@@ -64,7 +67,7 @@ El proyecto se desarrolla en **dos fases**:
 
 Bootstrap 5 · MongoDB 7 · Redis 7 · Eureka · Spring Cloud Config · Spring Cloud Gateway ·
 OpenFeign · Spring Security + JWT · Actuator + Micrometer · Docker / Compose ·
-Swagger/OpenAPI 3 · JUnit 5 + Mockito.
+Swagger/OpenAPI 3.
 
 ---
 
@@ -130,15 +133,14 @@ La API queda disponible en **http://localhost:8080**.
 
 ## 🔌 Endpoints disponibles
 
-> Estado a la fecha del último sprint (Sprint 3 — CRUD Mascota).
+> Estado a la fecha del último sprint (Sprint 6 — Testing).
 
 ### Dueños — `/api/duenio`
 
 | Método | Ruta | Descripción |
 |---|---|---|
-| `POST` | `/api/duenio` | Registrar un nuevo dueño |
+| `POST` | `/api/duenio` | Registrar un nuevo dueño (valida el DTO) |
 | `GET` | `/api/duenio/{id}` | Buscar dueño por ID |
-| `GET` | `/api/duenio/nombre/?nombre={nombre}` | Buscar dueño por nombre |
 
 ### Mascotas — `/api/mascota`
 
@@ -146,6 +148,23 @@ La API queda disponible en **http://localhost:8080**.
 |---|---|---|
 | `GET` | `/api/mascota` | Listar todas las mascotas |
 | `POST` | `/api/mascota` | Registrar una nueva mascota |
+
+### Veterinarios — `/api/veterinario`
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/api/veterinario` | Listar todos los veterinarios |
+| `GET` | `/api/veterinario/{id}` | Buscar veterinario por ID |
+| `POST` | `/api/veterinario` | Registrar un nuevo veterinario (valida el DTO) |
+
+### Turnos — `/api/turnos`
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `POST` | `/api/turnos` | Agendar un turno (valida existencia y superposición) |
+
+> El manejo de errores es centralizado vía `@ControllerAdvice` (`GlobalException`), que
+> traduce las excepciones de dominio a respuestas HTTP (`404 Not Found`, `409 Conflict`).
 
 Podés probar los endpoints con **Postman** o `curl`.
 
@@ -160,9 +179,9 @@ Podés probar los endpoints con **Postman** o `curl`.
 | 1 | Kickoff + dominio + setup del proyecto | ✅ Completado |
 | 2 | Arquitectura MVC + REST · CRUD de Dueño | ✅ Completado |
 | 3 | Persistencia JPA + relaciones · CRUD de Mascota | ✅ Completado |
-| 4 | CRUD Turno + Veterinario + DTOs (MapStruct / Lombok) | ⬜ Pendiente |
-| 5 | Validaciones + manejo de errores (`@ControllerAdvice`) | ⬜ Pendiente |
-| 6 | Testing: JUnit 5 + Mockito | ⬜ Pendiente |
+| 4 | CRUD Turno + Veterinario + DTOs (MapStruct / Lombok) | ✅ Completado |
+| 5 | Validaciones + manejo de errores (`@ControllerAdvice`) | ✅ Completado |
+| 6 | Testing: JUnit 5 + Mockito | 🚧 En progreso |
 | 7 | Swagger + Bootstrap UI + preparación migración | ⬜ Pendiente |
 | — | 🎯 **Parcial 1** | ⬜ Pendiente |
 
