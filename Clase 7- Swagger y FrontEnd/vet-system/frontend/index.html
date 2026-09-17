@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Veterinaria 'Patitas Felices'</title>
+
+    <!-- Sprint 7 - Paso 5: Bootstrap 5 via CDN. No se instala nada. -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <!-- ===== Navbar con el nombre de la clinica ===== -->
+    <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">🐾 Clinica Veterinaria 'Patitas Felices'</span>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Zona de alertas (errores / exitos) -->
+        <div id="alerta" class="alert d-none" role="alert"></div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="m-0">Duenios registrados</h2>
+            <!-- Boton que abre el modal de alta -->
+            <button type="button" class="btn btn-success"
+                    data-bs-toggle="modal" data-bs-target="#modalNuevoDuenio">
+                + Nuevo Duenio
+            </button>
+        </div>
+
+        <!-- ===== Tabla de duenios ===== -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover bg-white shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaDuenios">
+                    <!-- Filas cargadas por JS con fetch GET /api/duenio -->
+                </tbody>
+            </table>
+        </div>
+        <p id="sinDatos" class="text-muted d-none">No hay duenios registrados todavia.</p>
+    </div>
+
+    <!-- ===== Modal con el formulario de alta ===== -->
+    <div class="modal fade" id="modalNuevoDuenio" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formDuenio">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registrar nuevo duenio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Error del formulario (se muestra el message del ErrorResponse) -->
+                        <div id="errorForm" class="alert alert-danger d-none" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="cedula"
+                                   placeholder="Entre 7 y 8 digitos" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Telefono</label>
+                            <input type="number" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS (necesario para el modal) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===== Logica de la aplicacion: JS vanilla + Fetch API ===== -->
+    <script>
+        // Base del backend. Si abris el HTML con Live Server (localhost:5500),
+        // igual apunta al backend en 8080; por eso hace falta CORS en Spring.
+        const API_BASE = "http://localhost:8080";
+        const URL_DUENIOS = API_BASE + "/api/duenio";
+
+        // Referencias al DOM
+        const tabla = document.getElementById("tablaDuenios");
+        const sinDatos = document.getElementById("sinDatos");
+        const alerta = document.getElementById("alerta");
+        const errorForm = document.getElementById("errorForm");
+        const form = document.getElementById("formDuenio");
+        const modalEl = document.getElementById("modalNuevoDuenio");
+
+        // ---- Mostrar mensajes al usuario ----
+        function mostrarAlerta(mensaje, tipo) {
+            alerta.textContent = mensaje;
+            alerta.className = "alert alert-" + tipo;
+        }
+
+        // ---- GET: cargar la tabla de duenios ----
+        async function cargarDuenios() {
+            try {
+                const respuesta = await fetch(URL_DUENIOS);
+                if (!respuesta.ok) {
+                    throw new Error("El servidor respondio " + respuesta.status);
+                }
+                const duenios = await respuesta.json();
+                pintarTabla(duenios);
+            } catch (error) {
+                // Error de red o CORS -> fetch rechaza la promesa
+                mostrarAlerta("No se pudo conectar con la API. Verifica que el backend " +
+                    "este corriendo en " + API_BASE + " y que CORS este configurado. (" + error.message + ")",
+                    "danger");
+            }
+        }
+
+        function pintarTabla(duenios) {
+            tabla.innerHTML = "";
+            if (!duenios || duenios.length === 0) {
+                sinDatos.classList.remove("d-none");
+                return;
+            }
+            sinDatos.classList.add("d-none");
+            duenios.forEach(d => {
+                const fila = document.createElement("tr");
+                fila.innerHTML =
+                    "<td>" + (d.id ?? "") + "</td>" +
+                    "<td>" + escapar(d.nombre) + "</td>" +
+                    "<td>" + escapar(d.apellido) + "</td>" +
+                    "<td>" + escapar(d.cedula) + "</td>" +
+                    "<td>" + (d.telefono ?? "") + "</td>" +
+                    "<td>" + escapar(d.email) + "</td>";
+                tabla.appendChild(fila);
+            });
+        }
+
+        // Evita inyeccion de HTML al pintar datos que vienen de la API
+        function escapar(texto) {
+            if (texto === null || texto === undefined) return "";
+            return String(texto)
+                .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        // ---- POST: crear un duenio nuevo ----
+        form.addEventListener("submit", async (evento) => {
+            evento.preventDefault();
+            errorForm.classList.add("d-none");
+
+            // Armamos el DTO que espera el backend (DuenioDTO)
+            const telefonoValor = document.getElementById("telefono").value;
+            const nuevoDuenio = {
+                nombre: document.getElementById("nombre").value.trim(),
+                apellido: document.getElementById("apellido").value.trim(),
+                cedula: document.getElementById("cedula").value.trim(),
+                telefono: telefonoValor ? Number(telefonoValor) : null,
+                email: document.getElementById("email").value.trim()
+            };
+
+            try {
+                const respuesta = await fetch(URL_DUENIOS, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(nuevoDuenio)
+                });
+
+                if (respuesta.ok) {
+                    // Exito: cerrar modal, limpiar form y recargar la tabla (sin refresh de pagina)
+                    bootstrap.Modal.getInstance(modalEl).hide();
+                    form.reset();
+                    mostrarAlerta("Duenio creado correctamente.", "success");
+                    await cargarDuenios();
+                } else {
+                    // 4xx / 5xx: mostrar el mensaje de error del ErrorResponse
+                    const mensaje = await extraerMensajeError(respuesta);
+                    errorForm.textContent = mensaje;
+                    errorForm.classList.remove("d-none");
+                }
+            } catch (error) {
+                errorForm.textContent = "Error de conexion con la API: " + error.message;
+                errorForm.classList.remove("d-none");
+            }
+        });
+
+        // Extrae un mensaje legible de la respuesta de error.
+        // El backend puede responder un ErrorResponse {message, ...}, un mapa de
+        // errores de validacion, o texto plano. Contemplamos los tres casos.
+        async function extraerMensajeError(respuesta) {
+            // Leemos el cuerpo UNA sola vez como texto y despues intentamos parsear JSON.
+            const texto = await respuesta.text().catch(() => "");
+            try {
+                const cuerpo = JSON.parse(texto);
+                if (cuerpo.message) return cuerpo.message;
+                // Errores de Bean Validation: {campo: "mensaje", ...} o {errors:[...]}
+                if (cuerpo.errors) return JSON.stringify(cuerpo.errors);
+                return "Error " + respuesta.status + ": " + texto;
+            } catch (e) {
+                // No era JSON: devolvemos el texto plano (ej. el getMessage() del TurnoController)
+                return texto || ("El servidor respondio con estado " + respuesta.status);
+            }
+        }
+
+        // Al cargar la pagina: poblar la tabla
+        document.addEventListener("DOMContentLoaded", cargarDuenios);
+    </script>
+</body>
+</html>
