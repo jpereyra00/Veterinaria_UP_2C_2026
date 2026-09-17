@@ -19,6 +19,7 @@ evolucionando desde un **monolito MVC** hasta una **arquitectura de microservici
 - [Stack tecnológico](#-stack-tecnológico)
 - [Dominio](#-dominio)
 - [Cómo ejecutar el proyecto](#-cómo-ejecutar-el-proyecto)
+- [Frontend (package nuevo)](#-frontend-package-nuevo)
 - [Endpoints disponibles](#-endpoints-disponibles)
 - [Estado del proyecto (sprints)](#-estado-del-proyecto-sprints)
 - [Requisitos](#-requisitos)
@@ -131,42 +132,94 @@ La API queda disponible en **http://localhost:8080**.
 
 ---
 
+## 🖥 Frontend (package nuevo)
+
+A partir del **Sprint 7** el proyecto incorpora un **frontend** en una carpeta
+(*package*) **nueva e independiente** del código Java:
+
+```
+Clase 7- Swagger y FrontEnd/vet-system/
+├── src/                 # Backend Spring Boot (Java)
+└── frontend/            # 👈 FRONTEND NUEVO
+    ├── index.html       # UI con Bootstrap 5 (CDN) + JS vanilla + Fetch API
+    └── GUIA_FRONTEND.txt # 📄 Guía paso a paso para estudiantes
+```
+
+- **No se instala nada con npm**: Bootstrap 5 se carga por **CDN**.
+- Se abre con la extensión **Live Server** de VS Code (click derecho sobre
+  `frontend/index.html` → *Open with Live Server*).
+- El frontend consume la API en `http://localhost:8080` (constante `API_BASE`).
+- **CORS ya está resuelto** (clase `CorsConfig` en `config/`), así que la pantalla
+  de Dueños conecta y funciona apenas se levanta el backend.
+
+El frontend viene **funcional solo para la entidad Dueño**, y únicamente con los
+métodos ya programados en el controller (**listar** y **crear**). Sirve como
+**ejemplo de referencia** para que los estudiantes repliquen el resto.
+
+### ⚠️ Estudiantes: qué tienen que implementar
+
+El detalle completo, con código de ejemplo, está en:
+
+> 📄 **[`Clase 7- Swagger y FrontEnd/vet-system/frontend/GUIA_FRONTEND.txt`](Clase%207-%20Swagger%20y%20FrontEnd/vet-system/frontend/GUIA_FRONTEND.txt)**
+
+Resumen del trabajo a realizar:
+
+1. **Dueño**: implementar los métodos que faltan en el controller —**`PUT`
+   (editar)** y **`DELETE` (eliminar)**— y agregar sus botones en el frontend.
+2. **Veterinario**: completar el CRUD en el backend (faltan `PUT` y `DELETE`) y
+   construir su pantalla en el frontend (tabla + alta + editar + eliminar).
+3. **Mascota**: completar el CRUD en el backend (faltan `GET /{id}`, `PUT` y
+   `DELETE`) y construir su pantalla en el frontend, con **combo de Dueño**.
+
+> **Turno** queda fuera del alcance de esta entrega (salvo indicación del docente).
+
+---
+
 ## 🔌 Endpoints disponibles
 
-> Estado a la fecha del último sprint (Sprint 6 — Testing).
+> Estado a la fecha del Sprint 7. ✅ = ya implementado (docente) · 🧑‍🎓 = **tarea del alumno**.
 
 ### Dueños — `/api/duenio`
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| `POST` | `/api/duenio` | Registrar un nuevo dueño (valida el DTO) |
-| `GET` | `/api/duenio/{id}` | Buscar dueño por ID |
-
-### Mascotas — `/api/mascota`
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| `GET` | `/api/mascota` | Listar todas las mascotas |
-| `POST` | `/api/mascota` | Registrar una nueva mascota |
+| Método | Ruta | Descripción | Estado |
+|---|---|---|---|
+| `GET` | `/api/duenio` | Listar todos los dueños | ✅ |
+| `GET` | `/api/duenio/{id}` | Buscar dueño por ID | ✅ |
+| `POST` | `/api/duenio` | Registrar un nuevo dueño (valida el DTO) | ✅ |
+| `PUT` | `/api/duenio/{id}` | Editar un dueño | 🧑‍🎓 |
+| `DELETE` | `/api/duenio/{id}` | Eliminar un dueño | 🧑‍🎓 |
 
 ### Veterinarios — `/api/veterinario`
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| `GET` | `/api/veterinario` | Listar todos los veterinarios |
-| `GET` | `/api/veterinario/{id}` | Buscar veterinario por ID |
-| `POST` | `/api/veterinario` | Registrar un nuevo veterinario (valida el DTO) |
+| Método | Ruta | Descripción | Estado |
+|---|---|---|---|
+| `GET` | `/api/veterinario` | Listar todos los veterinarios | ✅ |
+| `GET` | `/api/veterinario/{id}` | Buscar veterinario por ID | ✅ |
+| `POST` | `/api/veterinario` | Registrar un nuevo veterinario (valida el DTO) | ✅ |
+| `PUT` | `/api/veterinario/{id}` | Editar un veterinario | 🧑‍🎓 |
+| `DELETE` | `/api/veterinario/{id}` | Eliminar un veterinario | 🧑‍🎓 |
 
-### Turnos — `/api/turnos`
+### Mascotas — `/api/mascota`
 
-| Método | Ruta | Descripción |
-|---|---|---|
-| `POST` | `/api/turnos` | Agendar un turno (valida existencia y superposición) |
+| Método | Ruta | Descripción | Estado |
+|---|---|---|---|
+| `GET` | `/api/mascota` | Listar todas las mascotas *(devuelve Entity, refactor → DTO)* | ✅ |
+| `POST` | `/api/mascota` | Registrar una nueva mascota | ✅ |
+| `GET` | `/api/mascota/{id}` | Buscar mascota por ID | 🧑‍🎓 |
+| `PUT` | `/api/mascota/{id}` | Editar una mascota | 🧑‍🎓 |
+| `DELETE` | `/api/mascota/{id}` | Eliminar una mascota | 🧑‍🎓 |
+
+### Turnos — `/api/turnos` *(fuera del alcance de esta entrega)*
+
+| Método | Ruta | Descripción | Estado |
+|---|---|---|---|
+| `POST` | `/api/turnos` | Agendar un turno (valida existencia y superposición) | ✅ |
 
 > El manejo de errores es centralizado vía `@ControllerAdvice` (`GlobalException`), que
 > traduce las excepciones de dominio a respuestas HTTP (`404 Not Found`, `409 Conflict`).
 
-Podés probar los endpoints con **Postman** o `curl`.
+Podés probar los endpoints con **Swagger UI** (`http://localhost:8080/swagger-ui/index.html`),
+**Postman** o `curl`.
 
 ---
 
@@ -181,8 +234,8 @@ Podés probar los endpoints con **Postman** o `curl`.
 | 3 | Persistencia JPA + relaciones · CRUD de Mascota | ✅ Completado |
 | 4 | CRUD Turno + Veterinario + DTOs (MapStruct / Lombok) | ✅ Completado |
 | 5 | Validaciones + manejo de errores (`@ControllerAdvice`) | ✅ Completado |
-| 6 | Testing: JUnit 5 + Mockito | 🚧 En progreso |
-| 7 | Swagger + Bootstrap UI + preparación migración | ⬜ Pendiente |
+| 6 | Testing: JUnit 5 + Mockito | ✅ Completado |
+| 7 | Swagger + Bootstrap UI (frontend nuevo) + CRUD completo | 🚧 En progreso |
 | — | 🎯 **Parcial 1** | ⬜ Pendiente |
 
 ### Fase 2 — Microservicios

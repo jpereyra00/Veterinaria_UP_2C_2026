@@ -1,0 +1,213 @@
+================================================================================
+  GUIA PARA ESTUDIANTES - Sprint 7: Reparar y conectar el FRONTEND
+  VetSystem - Clinica Veterinaria "Patitas Felices"
+  Universidad de Palermo - Microservicios y APIs Escalables
+================================================================================
+
+Este documento explica como esta armado el frontend nuevo (carpeta "frontend/")
+y QUE LES TOCA IMPLEMENTAR A USTEDES.
+
+ALCANCE (leer con atencion):
+  - El frontend YA VIENE FUNCIONAL, pero SOLO para la entidad DUENIO, y solo con
+    los metodos que el profe ya programo en el controller: LISTAR y CREAR.
+    Tomenlo como EJEMPLO DE REFERENCIA para copiar.
+  - El CORS (lo unico que rompia la conexion) YA ESTA RESUELTO por el profe
+    (ver clase CorsConfig en src/main/java/com/vetSystem/config/). No lo toquen.
+  - USTEDES deben implementar:
+        * VETERINARIO  -> backend (lo que falte) + frontend (tabla + alta + ...)
+        * MASCOTA      -> backend (lo que falte) + frontend (tabla + alta + ...)
+        * DUENIO       -> los metodos que el profe NO programo en el controller
+                          (EDITAR / PUT y ELIMINAR / DELETE) + sus botones en el
+                          frontend.
+  - TURNO queda fuera del alcance de esta entrega (salvo indicacion del profe).
+
+El frontend es un "package" (carpeta) NUEVO e independiente del codigo Java:
+
+    Clase 7- Swagger y FrontEnd/
+      vet-system/
+        src/            <- backend Spring Boot (Java)
+        frontend/       <- FRONTEND NUEVO (HTML + Bootstrap + JS vanilla)
+          index.html
+          GUIA_FRONTEND.txt   <- este archivo
+
+NO se instala nada con npm: Bootstrap 5 se carga por CDN. Solo necesitan un
+navegador y, opcionalmente, la extension "Live Server" de VS Code.
+
+
+--------------------------------------------------------------------------------
+0) COMO SE ABRE EL FRONTEND
+--------------------------------------------------------------------------------
+
+Opcion A (recomendada) - Live Server:
+  1. Abrir la carpeta "vet-system" en VS Code.
+  2. Instalar la extension "Live Server".
+  3. Click derecho sobre frontend/index.html -> "Open with Live Server".
+  4. El navegador abre algo como  http://localhost:5500/frontend/index.html
+
+Opcion B - doble click:
+  Abrir index.html directamente en el navegador (protocolo file://).
+
+En AMBOS casos el frontend le pega al backend en http://localhost:8080
+(ver la constante API_BASE en el <script> de index.html).
+
+
+--------------------------------------------------------------------------------
+1) CORS: YA RESUELTO POR EL PROFE (informativo, NO tocar)
+--------------------------------------------------------------------------------
+
+El frontend corre en un ORIGEN distinto (localhost:5500) al del backend
+(localhost:8080). Sin permiso de CORS el navegador bloquea las llamadas y la
+tabla de duenios queda vacia.
+
+Eso YA ESTA RESUELTO en:
+    src/main/java/com/vetSystem/config/CorsConfig.java
+
+Esa clase habilita /api/** para localhost:5500, asi que los endpoints que
+ustedes agreguen (Veterinario, Mascota, PUT/DELETE de Duenio) YA van a funcionar
+desde el frontend sin tocar nada de CORS.
+
+NOTA: abran el HTML SIEMPRE con Live Server (localhost:5500). Si lo abren con
+doble click (file://) el origen es "null" y CORS los va a bloquear.
+
+
+--------------------------------------------------------------------------------
+2) LO QUE FALTA EN EL BACKEND (tarea de ustedes)
+--------------------------------------------------------------------------------
+
+Cada entidad deberia exponer 5 operaciones: LISTAR, BUSCAR POR ID, CREAR,
+EDITAR (PUT) y ELIMINAR (DELETE). Referencia de estado actual:
+
+  DUENIO  ->  /api/duenio   (el profe dejo listar/ver/crear; USTEDES: PUT y DELETE)
+     [OK]    GET    /api/duenio        (listar todos)
+     [OK]    GET    /api/duenio/{id}   (buscar por id)
+     [OK]    POST   /api/duenio        (crear)
+     [USTEDES] PUT    /api/duenio/{id}   (editar)
+     [USTEDES] DELETE /api/duenio/{id}   (eliminar)
+
+  VETERINARIO  ->  /api/veterinario   (USTEDES completan el CRUD)
+     [OK]    GET    /api/veterinario
+     [OK]    GET    /api/veterinario/{id}
+     [OK]    POST   /api/veterinario
+     [USTEDES] PUT    /api/veterinario/{id}
+     [USTEDES] DELETE /api/veterinario/{id}
+
+  MASCOTA  ->  /api/mascota   (USTEDES completan el CRUD)
+     [OK]    GET    /api/mascota       (listar) -- OJO: hoy devuelve la Entity,
+                                        conviene refactorizar a MascotaDTO.
+     [OK]    POST   /api/mascota       (crear)
+     [USTEDES] GET    /api/mascota/{id}
+     [USTEDES] PUT    /api/mascota/{id}
+     [USTEDES] DELETE /api/mascota/{id}
+
+  TURNO  ->  fuera del alcance de esta entrega (salvo que el profe indique).
+
+Para cada operacion nueva deben tocar las 3 capas ya existentes:
+    Controller  ->  Service (interfaz + impl)  ->  Repository (JpaRepository)
+Reutilicen los Mapper (MapStruct) y los DTO ya creados. El manejo de errores
+(404/409) ya esta centralizado en GlobalException (@ControllerAdvice).
+
+Ejemplo de metodos a agregar en DuenioController:
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DuenioDTO> actualizar(@PathVariable Long id,
+                                                @Valid @RequestBody DuenioDTO dto) {
+        return ResponseEntity.ok(duenioService.actualizar(id, dto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        duenioService.eliminar(id);
+        return ResponseEntity.noContent().build();  // 204
+    }
+
+
+--------------------------------------------------------------------------------
+3) LO QUE FALTA EN EL FRONTEND (tarea de ustedes)
+--------------------------------------------------------------------------------
+
+Hoy index.html es el EJEMPLO FUNCIONAL DE DUENIO y SOLO hace:
+    - GET  /api/duenio  -> pinta la tabla de duenios
+    - POST /api/duenio  -> alta desde el modal
+(No tiene editar ni eliminar porque esos metodos todavia no existen en el
+controller de Duenio; ver punto 2.)
+
+Ustedes deben:
+
+  a) DUENIO: agregar botones EDITAR y ELIMINAR en cada fila de la tabla, una vez
+     que hayan creado los endpoints PUT y DELETE en el backend.
+     - Editar: reutilizar el modal precargando los campos y hacer PUT.
+     - Eliminar: window.confirm(...) + fetch DELETE + recargar la tabla.
+
+  b) VETERINARIO y MASCOTA: replicar la pantalla completa (tabla + modal + JS),
+     copiando la logica de index.html:
+        - Veterinario  (nombre, apellido, matricula, especialidad, email)
+        - Mascota      (nombre, especie, raza, fecha, duenio_id)
+     Sugerencia: un HTML por entidad (veterinarios.html, mascotas.html) o
+     secciones/pestanias dentro del mismo index.html.
+
+  c) En Mascota, el campo Duenio se elige con un combo (<select>) que se llena
+     con un GET /api/duenio (reutilizando lo que ya devuelve la tabla actual).
+
+Recordatorios de como pegarle a la API desde JS (patron ya usado en index.html):
+
+    // LISTAR
+    const r = await fetch(API_BASE + "/api/mascota");
+    const datos = await r.json();
+
+    // CREAR / EDITAR
+    await fetch(API_BASE + "/api/mascota" + (id ? "/" + id : ""), {
+        method: id ? "PUT" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(objeto)
+    });
+
+    // ELIMINAR
+    await fetch(API_BASE + "/api/mascota/" + id, { method: "DELETE" });
+
+IMPORTANTE: respeten los nombres de campo EXACTOS que espera cada DTO, porque el
+JSON se mapea por nombre:
+    DuenioDTO       : nombre, apellido, cedula, telefono, email
+    VeterinarioDTO  : nombre, apellido, matricula, especialidad, email
+    Mascota         : nombre, especie, raza, fecha, duenio (objeto con id)
+
+
+--------------------------------------------------------------------------------
+4) CHECKLIST DE ENTREGA (Definition of Done)
+--------------------------------------------------------------------------------
+
+  [ ] MySQL corriendo y base "vet_system" creada.
+  [ ] Backend levanta con mvnw.cmd spring-boot:run (puerto 8080).
+  [ ] La tabla de duenios (ejemplo del profe) carga sin errores -> confirma que
+      el entorno + CORS ya funcionan.
+  [ ] Backend: metodos PUT y DELETE de DUENIO.
+  [ ] Backend: CRUD completo de VETERINARIO (falta PUT y DELETE).
+  [ ] Backend: CRUD completo de MASCOTA (falta GET/{id}, PUT y DELETE).
+  [ ] Frontend: DUENIO con editar y eliminar.
+  [ ] Frontend: pantalla completa de VETERINARIO (tabla + alta + editar + eliminar).
+  [ ] Frontend: pantalla completa de MASCOTA (con combo de Duenio).
+  [ ] Probado en Swagger UI ( http://localhost:8080/swagger-ui/index.html ).
+  [ ] Codigo commiteado en la rama del sprint y README actualizado.
+
+
+--------------------------------------------------------------------------------
+5) COMO PROBAR RAPIDO
+--------------------------------------------------------------------------------
+
+  1. Levantar backend:
+       cd "Clase 7- Swagger y FrontEnd/vet-system"
+       mvnw.cmd spring-boot:run          (Windows)
+       ./mvnw spring-boot:run            (Linux/macOS)
+
+  2. Abrir Swagger para verificar endpoints:
+       http://localhost:8080/swagger-ui/index.html
+
+  3. Abrir el frontend con Live Server:
+       frontend/index.html  ->  "Open with Live Server"
+
+  4. Si algo falla, abrir la consola del navegador (F12 -> pestania Console y
+     Network) y leer el error. El 90% de los problemas son:
+        - Backend apagado.
+        - Abrir el HTML con doble click (file://) en vez de Live Server (5500).
+        - Nombre de campo del JSON distinto al del DTO.
+
+================================================================================
