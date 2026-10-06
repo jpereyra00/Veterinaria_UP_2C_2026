@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ms-duenio
+  config:
+    import: "optional:configserver:http://localhost:8888"
+
+server:
+  port: 8081
+
+  datasource:
+    url: jdbc:mysql://locahost:3306/duenio_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto:update
+    show-sql: true

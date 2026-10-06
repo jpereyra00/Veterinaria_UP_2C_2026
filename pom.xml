@@ -14,6 +14,7 @@
 
     <modules>
         <module>ms-duenio</module>
+        <module>eureka-server</module>
 
     </modules>
 

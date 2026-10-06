@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b09b972-1a80-4ad3-b771-f85629dd79a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/DuenioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/GlobalException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/dto/DuenioMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/dto/DuenioRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-duenio/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-duenio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/DuenioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/adapter/in/web/DuenioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,18 +30,18 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="3K1Q4CQZewp1do6DyGVfbJQicRS" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,22 +52,70 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.EurekaServerApplication.executor": "Run",
+    "Spring Boot.MsDuenioApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "microservices",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Escritorio/Universidad/UP/Veterianaria_UP/MicroServices/patitas-felices/ms-duenio/src/main/java/adapter/in/web/dto",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-duenio\src\main\java\adapter\in\web\dto" />
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-duenio\src\main\java\adapter" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-duenio\src\main\java\com\patitas\adapter\in\web" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="domain.model.exception" />
       <recent name="domain.model.port.out" />
       <recent name="domain.model.port" />
       <recent name="domain" />
     </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MsDuenioApplication">
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="eureka-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.patitas.eureka_server.EurekaServerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.patitas.eureka_server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MsDuenioApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="ms-duenio" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.patitas.MsDuenioApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.patitas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MsDuenioApplication" />
+        <item itemvalue="Spring Boot.EurekaServerApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

@@ -1,4 +1,4 @@
-package adapter;
+package com.patitas.adapter.in.web;
 
 import domain.model.Duenio;
 import domain.port.out.DuenioRepositoryPort;
