@@ -15,18 +15,17 @@ spring:
       description: Microservicio destinado a la gestion de turnos- Patitas Felices
       version: 1.0.0
 
-spring:
   cloud:
-    openfeing:
-  client:
-    config:
-      default:
-        connect-timeout: 3000
-        read-timeout: 5000
-        compression:
-          request:
-            enabled: true
-            response:
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 3000
+            read-timeout: 5000
+            compression:
+              request:
+                enabled: true
+              response:
                 enabled: true
 logging:
   level:

@@ -5,84 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8428746-0f3a-4f9e-9559-2eb6ca5188b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-duenio.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-mascota.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-turno.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-veterinario.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/MsMascotaApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/in/web/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/in/web/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/in/web/MascotaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/in/web/dto/MascotaMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/in/web/dto/MascotaRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/in/web/dto/MascotaResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/adapter/out/persistence/MascotaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/application/MascotaServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/domain/exception/MascotaNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/domain/model/Mascota.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/domain/port/in/MascotaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/java/com/patitas/mascota/domain/port/out/MascotaRepositoryPort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-mascota/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/MsTurnoApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/TurnoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/dto/TurnoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/dto/TurnoRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/dto/TurnoResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/MascotaFeignAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/MascotaFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/MascotaResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/VeterinarioFeignAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/VeterinarioFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/VeterinarioResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/persistence/TurnoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/application/TurnoServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/exception/MascotaNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/exception/TurnoNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/exception/VeterinarioNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/model/EstadoTurno.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/model/Turno.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/port/in/TurnoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/port/out/MascotaServicePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/port/out/TurnoRepositoryPort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/port/out/VeterinarioServicePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/MsVeterinarioApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/in/web/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/in/web/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/in/web/VeterinarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/in/web/dto/VeterinarioMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/in/web/dto/VeterinarioRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/in/web/dto/VeterinarioResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/adapter/out/persistence/VeterinarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/application/VeterinarioServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/domain/exception/VeterinarioNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/domain/model/Veterinario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/domain/port/in/VeterinarioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/java/com/patitas/veterinario/domain/port/out/VeterinarioRepositoryPort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms-veterinario/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-sever/src/main/java/com/patitas/config_sever/ConfigSeverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/java/com/patitas/config_sever/ConfigSeverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-sever/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-turno.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-turno.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ms-duenio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/DuenioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/DuenioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/GlobalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/GlobalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/dto/DuenioMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/dto/DuenioMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/dto/DuenioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/adapter/in/web/dto/DuenioRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/MsDuenioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/MsDuenioApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/application/DuenioServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/domain/exception/DuenioNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/domain/exception/DuplicateEmailException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/domain/model/Duenio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/domain/port/in/DuenioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/java/com/patitas/domain/port/out/DuenioRepositoryPort.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,8 +37,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.ConfigSeverApplication.executor": "Run",
     "Spring Boot.EurekaServerApplication.executor": "Run",
     "Spring Boot.MsDuenioApplication.executor": "Run",
+    "Spring Boot.MsMascotaApplication.executor": "Run",
+    "Spring Boot.MsTurnoApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "microservices",
     "kotlin-language-version-configured": "true",
@@ -165,6 +96,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MsMascotaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="ms-mascota" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.patitas.mascota.MsMascotaApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.patitas.mascota.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MsTurnoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="ms-turno" />
@@ -182,9 +127,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.MsTurnoApplication" />
+        <item itemvalue="Spring Boot.MsMascotaApplication" />
+        <item itemvalue="Spring Boot.MsDuenioApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication" />
         <item itemvalue="Spring Boot.ConfigSeverApplication" />
-        <item itemvalue="Spring Boot.MsDuenioApplication" />
       </list>
     </recent_temporary>
   </component>
