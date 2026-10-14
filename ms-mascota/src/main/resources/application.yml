@@ -1,0 +1,8 @@
+# ms-mascota — config local mínima (el resto viene del Config Server)
+spring:
+  application:
+    name: ms-mascota
+  config:
+    import: "optional:configserver:http://localhost:8888"
+server:
+  port: 8082

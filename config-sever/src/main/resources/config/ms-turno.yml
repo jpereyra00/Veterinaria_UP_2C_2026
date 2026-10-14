@@ -1,0 +1,33 @@
+server:
+  port: 8084
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/turno_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  info:
+    app:
+      name: ms-turno
+      description: Microservicio destinado a la gestion de turnos- Patitas Felices
+      version: 1.0.0
+
+spring:
+  cloud:
+    openfeing:
+  client:
+    config:
+      default:
+        connect-timeout: 3000
+        read-timeout: 5000
+        compression:
+          request:
+            enabled: true
+            response:
+                enabled: true
+logging:
+  level:
+    com.patitas.turno.adapter.out.feign: DEBUG

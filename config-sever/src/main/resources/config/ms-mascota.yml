@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mascota_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  info:
+   app:
+     name: ms-mascota
+     description: Microservicio destinado a la gestion de mascotas- Patitas Felices
+     version: 1.0.0

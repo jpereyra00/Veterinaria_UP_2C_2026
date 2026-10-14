@@ -1,0 +1,8 @@
+# ms-veterinario — config local mínima (el resto viene del Config Server)
+spring:
+  application:
+    name: ms-veterinario
+  config:
+    import: "optional:configserver:http://localhost:8888"
+server:
+  port: 8083

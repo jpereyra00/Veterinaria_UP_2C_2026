@@ -2,23 +2,28 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ms-duenio" />
+        <module name="ms-mascota" />
+        <module name="ms-turno" />
+        <module name="config-sever" />
         <module name="eureka-server" />
+        <module name="ms-veterinario" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ms-dueno" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-sever" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="ms-duenio" options="-parameters" />
-      <module name="ms-dueno" options="-parameters" />
+      <module name="ms-mascota" options="-parameters" />
+      <module name="ms-turno" options="-parameters" />
+      <module name="ms-veterinario" options="-parameters" />
     </option>
   </component>
 </project>
