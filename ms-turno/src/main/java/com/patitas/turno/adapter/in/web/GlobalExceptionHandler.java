@@ -1,9 +1,11 @@
 package com.patitas.turno.adapter.in.web;
 
 import com.patitas.turno.domain.exception.MascotaNotFoundException;
+import com.patitas.turno.domain.exception.ServicioNoDisponibleException;
 import com.patitas.turno.domain.exception.TurnoNotFoundException;
 import com.patitas.turno.domain.exception.VeterinarioNotFoundException;
 import feign.FeignException;
+import feign.Response;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,6 +65,11 @@ public class GlobalExceptionHandler {
         return construir(HttpStatus.SERVICE_UNAVAILABLE,
                 "Servicio remoto no disponible: " + ex.getMessage(), request);
     }
+    @ExceptionHandler(ServicioNoDisponibleException.class)
+    public ResponseEntity<ErrorResponse> manejarServicioNoDisponible(ServicioNoDisponibleException ex,HttpServletRequest request){
+        return construir(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), request);
+    }
+
 
     /** Cualquier otra excepcion no prevista -> 500 Internal Server Error */
     @ExceptionHandler(Exception.class)

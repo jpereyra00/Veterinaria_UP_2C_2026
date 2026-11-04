@@ -5,17 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8428746-0f3a-4f9e-9559-2eb6ca5188b2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-auth.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/dto/AuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/dto/RegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/adapter/in/web/out/persistance/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/application/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/application/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/domain/exception/CredencialesInvalidasException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/domain/exception/UsuarioYaExisteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/domain/model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/domain/port/in/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-auth/src/main/java/com/patitas/ms_auth/domain/port/out/UsuarioRepositoryPort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-gateway/src/main/java/com/patitas/filters/AuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-gateway/src/main/java/com/patitas/filters/LoggingFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-gateway/src/main/java/com/patitas/security/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-gateway/src/main/resources/static/duenios.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-gateway/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/domain/exception/ServicioNoDisponibleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-sever/src/main/java/com/patitas/config_sever/ConfigSeverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/java/com/patitas/config_sever/ConfigSeverApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-sever/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-sever/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-turno.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-sever/src/main/resources/config/ms-turno.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ms-duenio/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-duenio/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-turno/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ms-turno/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/in/web/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/MascotaFeignAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/MascotaFeignAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/VeterinarioFeignAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ms-turno/src/main/java/com/patitas/turno/adapter/out/feign/VeterinarioFeignAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,20 +73,28 @@
     "Spring Boot.ConfigSeverApplication.executor": "Run",
     "Spring Boot.EurekaServerApplication.executor": "Run",
     "Spring Boot.MsDuenioApplication.executor": "Run",
+    "Spring Boot.MsGatewayApplication.executor": "Run",
     "Spring Boot.MsMascotaApplication.executor": "Run",
     "Spring Boot.MsTurnoApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "microservices",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Escritorio/Universidad/UP/Veterianaria_UP/MicroServices/patitas-felices"
+    "last_opened_file_path": "D:/Escritorio/Universidad/UP/Veterianaria_UP/MicroServices/patitas-felices/ms-gateway/src/main/java/com/patitas"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-gateway\src\main\java\com\patitas" />
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-auth\src\main\java\com\patitas\ms_auth\config" />
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-auth\src\main\java\com\patitas\ms_auth\application" />
+      <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices\ms-gateway\src\main\resources\static" />
       <recent name="D:\Escritorio\Universidad\UP\Veterianaria_UP\MicroServices\patitas-felices" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.patitas.filters" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MsTurnoApplication">
+  <component name="RunManager" selected="Spring Boot.MsGatewayApplication">
     <configuration name="ConfigSeverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="config-sever" />
@@ -96,13 +137,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MsMascotaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="MsGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="ms-mascota" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.patitas.mascota.MsMascotaApplication" />
+      <module name="ms-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.patitas.MsGatewayApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.patitas.mascota.*" />
+          <option name="PATTERN" value="com.patitas.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.MsTurnoApplication" />
-        <item itemvalue="Spring Boot.MsMascotaApplication" />
         <item itemvalue="Spring Boot.MsDuenioApplication" />
+        <item itemvalue="Spring Boot.MsGatewayApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication" />
         <item itemvalue="Spring Boot.ConfigSeverApplication" />
+        <item itemvalue="Spring Boot.MsTurnoApplication" />
       </list>
     </recent_temporary>
   </component>

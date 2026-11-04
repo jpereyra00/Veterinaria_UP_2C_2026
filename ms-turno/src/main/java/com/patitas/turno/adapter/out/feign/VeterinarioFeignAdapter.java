@@ -1,6 +1,8 @@
 package com.patitas.turno.adapter.out.feign;
 
+import com.patitas.turno.domain.exception.ServicioNoDisponibleException;
 import com.patitas.turno.domain.port.out.VeterinarioServicePort;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,7 @@ public class VeterinarioFeignAdapter implements VeterinarioServicePort {
     private final VeterinarioFeignClient client;
 
     @Override
+    @CircuitBreaker(name = "ms-veterinario", fallbackMethod = "existsByIdFallback")
     public boolean existsById(Long id) {
         try {
             client.findById(id);
@@ -22,5 +25,9 @@ public class VeterinarioFeignAdapter implements VeterinarioServicePort {
         } catch (feign.FeignException.NotFound e) {
             return false;
         }
+    }
+
+    public boolean existsByIdFallback(Long id, Throwable causa) {
+        throw new ServicioNoDisponibleException("ms-veterinario");
     }
 }

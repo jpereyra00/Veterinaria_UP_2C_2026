@@ -19,6 +19,8 @@
         <module>ms-turno</module>
         <module>config-sever</module>
         <module>eureka-server</module>
+        <module>ms-gateway</module>
+        <module>ms-auth</module>
     </modules>
 
     <parent>

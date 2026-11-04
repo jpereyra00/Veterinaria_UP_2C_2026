@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: ms-auth
+              uri: lb://ms-auth
+              predicates:
+                - Path=/auth/**
+            - id: ms-duenio
+              uri: lb://ms-duenio
+              predicates:
+                - Path=/api/duenio/**
+            - id: ms-mascota
+              uri: lb://ms-mascota
+              predicates:
+                - Path=/api/mascotas/**
+            - id: ms-veterinario
+              uri: lb://ms-veterinario
+              predicates:
+                - Path=/api/veterinarios/**
+            - id: ms-turno
+              uri: lb://ms-turno
+              predicates:
+                - Path=/api/turnos/**

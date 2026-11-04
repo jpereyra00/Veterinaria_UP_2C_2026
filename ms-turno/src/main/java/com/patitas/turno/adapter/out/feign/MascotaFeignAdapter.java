@@ -1,6 +1,9 @@
 package com.patitas.turno.adapter.out.feign;
 
+import com.patitas.turno.domain.exception.ServicioNoDisponibleException;
 import com.patitas.turno.domain.port.out.MascotaServicePort;
+import feign.FeignException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +19,7 @@ public class MascotaFeignAdapter implements MascotaServicePort {
     private final MascotaFeignClient client;
 
     @Override
+    @CircuitBreaker(name = "ms-mascota", fallbackMethod = "existsByIdFallback")
     public boolean existsById(Long id) {
         try {
             client.findById(id);
@@ -23,5 +27,8 @@ public class MascotaFeignAdapter implements MascotaServicePort {
         } catch (feign.FeignException.NotFound e) {
             return false;
         }
+    }
+    public boolean existsByIdFallback(Long id, Throwable causa) {
+        throw new ServicioNoDisponibleException("ms-mascota");
     }
 }

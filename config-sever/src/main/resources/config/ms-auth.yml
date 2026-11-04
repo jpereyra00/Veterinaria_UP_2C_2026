@@ -1,0 +1,23 @@
+server:
+  port: 8085
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/patitas_auth
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+jwt:
+  secret: ${JWT_SECRET:patitas-felices-clave-secreta-jwt-256-bits-minimo-cambiar}
+
+info:
+  app: ms-auth
+  description: Microservicio de autenticacion (JWT) - Patitas Felices
+  version: 1.0.0

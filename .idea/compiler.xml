@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ms-duenio" />
+        <module name="ms-auth" />
+        <module name="ms-veterinario" />
         <module name="ms-mascota" />
         <module name="ms-turno" />
         <module name="config-sever" />
         <module name="eureka-server" />
-        <module name="ms-veterinario" />
+        <module name="ms-gateway" />
       </profile>
     </annotationProcessing>
   </component>
@@ -20,7 +22,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-sever" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="ms-auth" options="-parameters" />
       <module name="ms-duenio" options="-parameters" />
+      <module name="ms-gateway" options="-parameters" />
       <module name="ms-mascota" options="-parameters" />
       <module name="ms-turno" options="-parameters" />
       <module name="ms-veterinario" options="-parameters" />
